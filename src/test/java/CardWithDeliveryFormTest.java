@@ -13,7 +13,7 @@ public class CardWithDeliveryFormTest {
 
     @Test
     void shouldSendForm() {
-//        Configuration.headless = true;
+        Configuration.headless = true;
         Configuration.holdBrowserOpen = true;
         LocalDate date = LocalDate.now();
         open("http://localhost:9999");
