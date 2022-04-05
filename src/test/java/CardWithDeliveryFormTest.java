@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -16,7 +17,8 @@ public class CardWithDeliveryFormTest {
         LocalDate date = LocalDate.now();
         open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Южно-Сахалинск");
-        $("[data-test-id='date'] input").clear();
+        $("[data-test-id='date'] input").doubleClick();
+        $("[data-test-id='date'] input").sendKeys(Keys.DELETE);
         $("[data-test-id='date'] input").setValue(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd MM yyyy")));
         $("[data-test-id='name'] input").setValue("Жан-Поль Бельмондо");
         $("[data-test-id='phone'] input").setValue("12345678910");
