@@ -25,7 +25,7 @@ public class CardWithDeliveryFormTest {
         $("[data-test-id='phone'] input").setValue("12345678910");
         $("[data-test-id=agreement]").click();
         $$("button").find(Condition.exactText("Запланировать")).click();
-        $("[data-test-id='replan-notification'] button").click();
+        $("[data-test-id='replan-notification'] button").shouldBe(Condition.visible).click();
         $("[data-test-id='success-notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 }
