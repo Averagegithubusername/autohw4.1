@@ -22,10 +22,10 @@ public class CardWithDeliveryFormTest {
         $("[data-test-id='date'] input").sendKeys(Keys.DELETE);
         $("[data-test-id='date'] input").setValue(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd MM yyyy")));
         $("[data-test-id='name'] input").setValue("Жан-Поль Бельмондо");
-        $("[data-test-id='phone'] input").setValue("12345678910");
+        $("[data-test-id='phone'] input").setValue("+12345678910");
         $("[data-test-id=agreement]").click();
-        $$("button").find(Condition.exactText("Запланировать")).click();
-//        $("[data-test-id='replan-notification'] button").shouldBe(Condition.appear).click();
-        $("[data-test-id='success-notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $$("button").find(Condition.exactText("Забронировать")).click();
+        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(".notification__content").shouldHave(Condition.ownText(date.plusDays(5).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))));
     }
 }
